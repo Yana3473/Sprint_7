@@ -7,6 +7,7 @@ import io.restassured.response.ValidatableResponse;
 import model.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import static org.apache.http.HttpStatus.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,7 +43,7 @@ public class OrderCreateTest extends BaseTest  {
         }
 
         ValidatableResponse response = orderClient.create(order);
-        response.statusCode(201)
+        response.statusCode(SC_CREATED)
                 .body("track", notNullValue());
     }
 }
